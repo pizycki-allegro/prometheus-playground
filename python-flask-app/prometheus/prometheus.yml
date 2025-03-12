@@ -6,3 +6,7 @@ scrape_configs:
   static_configs:
   - targets:
     - myapp:5000
+  metric_relabel_configs:
+  - source_labels: [__name__, le]
+    regex: 'myapp_request_latency_seconds_bucket;0\.[0-1][0-9]*'
+    action: drop

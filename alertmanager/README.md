@@ -8,10 +8,10 @@ To start the sandbox:
 
 ```bash
 # In the foreground
-make run # docker-compose up --build
+make run # podman compose up --build
 
 # In detached mode
-make run-detached # docker-compose up --build --detach
+make run-detached # podman compose up --build --detach
 ```
 
 This will start up five services:
@@ -31,7 +31,7 @@ When you first start up the containers, there's no alert-worthy behavior because
 To create an alert, stop the service:
 
 ```bash
-docker-compose stop hello
+podman compose stop hello
 ```
 
 Wait about 10 seconds and you should see something like this in the Docker Compose logs:
@@ -43,7 +43,7 @@ webhook_1       | 2018/07/23 19:31:28 Webhook received: {"receiver":"webhook","s
 This indicates that Alertmanager has `POST`ed a webhook to the running [`webhook`](./webhook/main.go) service. You can also read the webhook service logs directly:
 
 ```bash
-docker-compose logs webhook
+podman compose logs webhook
 ```
 
 You can also see the alert in the [Alertmanager UI](http://localhost:9093/#/alerts). It should look like this:
@@ -57,7 +57,7 @@ In the Prometheus expression browser, [`up{job="hello"}`](http://localhost:9090/
 The `amtool` service can be used as a proxy for the [amtool](https://github.com/prometheus/alertmanager#amtool) CLI utility. For ease of use, you can alias `amtool` to the container:
 
 ```bash
-alias amtool='docker-compose run amtool amtool'
+alias amtool='podman compose run amtool amtool'
 ```
 
 Now you can use amtool commands like this:

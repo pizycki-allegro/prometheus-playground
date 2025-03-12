@@ -6,9 +6,7 @@ services:
     - ./nginx:/etc/nginx:ro
     - ./certs:/root/certs/example.com
     ports:
-    - 443:443
-    links:
-    - prometheus:prometheus
+    - 4430:443
     depends_on:
     - prometheus
   prometheus:

@@ -1,8 +1,8 @@
 run:
-	docker-compose up --build
+	podman compose up --build
 
 run-detached:
-	docker-compose up --build --detach
+	podman compose up --build --detach
 
 kill:
-	docker-compose kill
+	podman compose kill

@@ -1,8 +1,8 @@
 # The Prometheus Playground
 
-This repo houses a variety of [Docker-Compose](https://docs.docker.com/compose)-based "sandbox" projects showcasing the [Prometheus](https://prometheus.io) monitoring system. All projects are "turnkey" and require just a single `docker-compose up` command to run.
+This repo houses a variety of [podman compose](https://docs.docker.com/compose)-based "sandbox" projects showcasing the [Prometheus](https://prometheus.io) monitoring system. All projects are "turnkey" and require just a single `podman compose up` command to run.
 
-Each sandbox project has a `README` with an explanation of the project, a `docker-compose.yml` configuration file for Docker Compose, and other necessary resources (config files, `Dockerfile`s, etc.). To run a project, navigate to the appropriate directory and run `make run` (which is just an alias for `docker-compose up --build`). This will run the project in the *foreground*. To run the project in detached mode, use `make run-detached`.
+Each sandbox project has a `README` with an explanation of the project, a `podman compose.yml` configuration file for Docker Compose, and other necessary resources (config files, `Dockerfile`s, etc.). To run a project, navigate to the appropriate directory and run `make run` (which is just an alias for `podman compose up --build`). This will run the project in the *foreground*. To run the project in detached mode, use `make run-detached`.
 
 ## Prerequisites
 

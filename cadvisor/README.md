@@ -14,15 +14,15 @@ To start the sandbox:
 
 ```bash
 # In the foreground
-make run # docker-compose up --build
+make run # podman compose up --build
 
 # In detached mode
-make run-detached # docker-compose up --build --detach
+make run-detached # podman compose up --build --detach
 ```
 
 This will start up the three containers mentioned above.
 
-> To kill the sandbox, run `make kill` (alias for `docker-compose kill`).
+> To kill the sandbox, run `make kill` (alias for `podman compose kill`).
 
 Open up `http://localhost:9090/graph` to access the Prometheus expression browser. Some example metrics to explore:
 

@@ -8,10 +8,10 @@ To start the sandbox:
 
 ```bash
 # In the foreground
-make run # docker-compose up --build
+make run # podman compose up --build
 
 # In detached mode
-make run-detached # docker-compose up --build --detach
+make run-detached # podman compose up --build --detach
 ```
 
 This will start up three services:
@@ -31,7 +31,7 @@ Things to check out:
 At first, the `web` service will be running normally, which means that the Blackbox probes of that service's `/health` will succeed. This will change if you shut down the service:
 
 ```bash
-docker-compose stop web
+podman compose stop web
 ```
 
 Now you can navigate back to the most recent [probe result](http://localhost:9115/probe?target=web:2112/health&module=http_2xx) and see that `probe_success` now has a value of 0. If you navigate back to the Prometheus [expression browser](http://localhost:9090/graph?g0.range_input=1h&g0.expr=probe_success%7Binstance%3D%22web%3A2112%2Fhealth%22%7D&g0.tab=1) you can see that `probe_success` for the `web` service now returns 0 as well (the scrape interval is 5 seconds, so you may need to wait a bit and hit refresh).
@@ -39,7 +39,7 @@ Now you can navigate back to the most recent [probe result](http://localhost:911
 If you restart the `web` service, the probes will once again be successful:
 
 ```bash
-docker-compose start web
+podman compose start web
 ```
 
 ## Assets
