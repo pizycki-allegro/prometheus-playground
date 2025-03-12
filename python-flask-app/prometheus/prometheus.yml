@@ -6,7 +6,7 @@ scrape_configs:
   static_configs:
   - targets:
     - myapp:5000
-  metric_relabel_configs:
+  #metric_relabel_configs:
   
   # Histograms are expensive in terms of storage.
   # Some buckets can be discarded as they purpose is too little.
