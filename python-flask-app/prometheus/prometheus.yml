@@ -7,6 +7,18 @@ scrape_configs:
   - targets:
     - myapp:5000
   metric_relabel_configs:
-  - source_labels: [__name__, le]
-    regex: 'myapp_request_latency_seconds_bucket;0\.[0-1][0-9]*'
-    action: drop
+  
+  # Histograms are expensive in terms of storage.
+  # Some buckets can be discarded as they purpose is too little.
+  # To discard buckets with connections <200ms, use the following configuration.
+  # Discarded buckets will be aggregated into the the closest bucket ({le="200").
+  # - source_labels: [__name__, le]
+  #   regex: 'myapp_request_latency_seconds_bucket;0\.[0-1][0-9]*'
+  #   action: drop
+
+  # If you want to put all the buckets with connections <200ms into new bucket, use the following configuration.
+  # It will group all samples between 0 and 0.199.
+  # - source_labels: [__name__, le]
+  #   regex: myapp_request_latency_seconds_bucket;0\.[0-1][0-9]*
+  #   target_label: le
+  #   replacement: '0.199'
